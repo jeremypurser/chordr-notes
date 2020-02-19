@@ -1,3 +1,7 @@
+export interface State {
+  guitarNeck: Neck;
+}
+
 // 'O' === Open, 'R' === Ring, 'S' === Silent
 type String = 'O' | 'R' | 'S';
 

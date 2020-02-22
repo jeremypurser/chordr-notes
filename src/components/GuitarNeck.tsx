@@ -8,6 +8,8 @@ export default function GuitarNeckComponent() {
   // pulls in state from Redux store
   const guitarNeck = useSelector((state: State) => state.guitarNeck);
 
+  // TODO: hard code v-line
+  // TODO: change stringeCases to determine node display
   // TODO: rename i and j
   const renderGuitarNeck = guitarNeck.map((fret, i) => (
     <div className="neck" key={i}>

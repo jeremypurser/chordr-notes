@@ -8,11 +8,16 @@ export default function GuitarNeckComponent() {
   // pulls in state from Redux store
   const guitarNeck = useSelector((state: State) => state.guitarNeck);
 
+  // TODO: rename i and j
   const renderGuitarNeck = guitarNeck.map((fret, i) => (
-    <div key={i}>
+    <div className="neck" key={i}>
       {fret.map((string, j) => (
-        <div className={`column ${stringCases(string)}`} key={j}>
-          {string}
+        <div
+          onClick={() => console.log('i:', i, 'j:', j)}
+          className={`column ${stringCases(string)}`}
+          key={j}
+        >
+          <span className="fret-string"> </span>
         </div>
       ))}
     </div>

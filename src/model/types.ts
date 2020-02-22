@@ -3,9 +3,16 @@ export interface State {
 }
 
 // 'O' === Open, 'R' === Ring, 'S' === Silent
-type String = 'O' | 'R' | 'S';
+export type GuitarString = 'O' | 'R' | 'S';
 
-type Fret = [String, String, String, String, String, String];
+type Fret = [
+  GuitarString,
+  GuitarString,
+  GuitarString,
+  GuitarString,
+  GuitarString,
+  GuitarString
+];
 
 export type Neck = [Fret, Fret, Fret, Fret, Fret, Fret];
 

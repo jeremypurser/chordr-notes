@@ -1,17 +1,10 @@
 .column {
   color: grey;
   background-color: yellow;
+  border-bottom: 2px solid black;
 }
 
 .v-line {
-  border-left: 2px solid green;
+  background: linear-gradient(#000, #000) no-repeat center/2px 100%;
+  background-color: yellow;
 }
-// .column:after {
-//   position: absolute;
-//   z-index: -1;
-//   top: 0;
-//   bottom: 0;
-//   left: 50%;
-//   border-left: 2px dotted #ff0000;
-//   transform: translateX(-50%);
-// }

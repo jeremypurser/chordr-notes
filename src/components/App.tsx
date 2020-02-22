@@ -1,13 +1,13 @@
 import React from 'react';
 import GuitarNeck from './GuitarNeck';
+import Header from './Header';
 import 'bulma';
 
 export default function App() {
   return (
-    <div className="level">
-      <div className="level-left">
-        <GuitarNeck />
-      </div>
+    <div className="container is-fluid">
+      <Header />
+      <GuitarNeck />
     </div>
   );
 }

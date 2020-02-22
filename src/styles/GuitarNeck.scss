@@ -1,5 +1,9 @@
+.neck {
+  border-top: 2px solid black;
+}
 .column {
-  color: grey;
+  height: 3rem;
+  width: 2rem;
   background-color: yellow;
   border-bottom: 2px solid black;
 }
@@ -7,4 +11,9 @@
 .v-line {
   background: linear-gradient(#000, #000) no-repeat center/2px 100%;
   background-color: yellow;
+}
+
+.fret-string {
+  color: yellow;
+  z-index: -5;
 }

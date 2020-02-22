@@ -1,0 +1,17 @@
+.column {
+  color: grey;
+  background-color: yellow;
+}
+
+.v-line {
+  border-left: 2px solid green;
+}
+// .column:after {
+//   position: absolute;
+//   z-index: -1;
+//   top: 0;
+//   bottom: 0;
+//   left: 50%;
+//   border-left: 2px dotted #ff0000;
+//   transform: translateX(-50%);
+// }

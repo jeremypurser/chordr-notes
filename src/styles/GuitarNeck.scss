@@ -1,11 +1,14 @@
 .neck {
+  width: 200px;
+}
+.columns {
   border-top: 2px solid black;
+  margin-bottom: 14px;
 }
 .column {
   height: 3rem;
   width: 2rem;
   background-color: yellow;
-  border-bottom: 2px solid black;
   text-align: center;
 }
 
@@ -16,6 +19,8 @@
 }
 
 .fret-string {
-  margin-left: -0.2rem;
+  display: inline-block;
+  width: 2rem;
+  margin-left: -0.66rem;
   text-align: center;
 }

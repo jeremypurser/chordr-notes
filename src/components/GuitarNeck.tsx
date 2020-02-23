@@ -29,7 +29,7 @@ export default function GuitarNeck() {
           id={`${fretIdx}-${stringIdx}`}
           key={stringIdx}
         >
-          <span className="fret-string">{stringCases(string)}</span>
+          <span>{stringCases(string)}</span>
         </div>
       ))}
     </div>

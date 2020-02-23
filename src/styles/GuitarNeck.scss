@@ -1,26 +1,12 @@
 .neck {
-  width: 200px;
-}
-.columns {
   border-top: 2px solid black;
-  margin-bottom: 14px;
-}
-.column {
-  height: 3rem;
-  width: 2rem;
-  background-color: yellow;
-  text-align: center;
 }
 
 .v-line {
+  height: 3rem;
+  background-color: yellow;
+  text-align: center;
   background: linear-gradient(#000, #000) no-repeat center/2px 100%;
   background-color: yellow;
   cursor: pointer;
-}
-
-.fret-string {
-  display: inline-block;
-  width: 2rem;
-  margin-left: -0.66rem;
-  text-align: center;
 }

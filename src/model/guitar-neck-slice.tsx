@@ -10,7 +10,7 @@ const initialState: Neck = [
   ['S', 'S', 'S', 'S', 'S', 'S'],
 ];
 
-export const guitarNeck = createSlice({
+export const guitarNeckSlice = createSlice({
   name: 'guitarNeck',
   initialState,
   reducers: {

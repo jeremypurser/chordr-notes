@@ -5,11 +5,11 @@ describe('stringCases', () => {
     expect(stringCases('R')).toBe('●');
   });
 
-  test('it returns empty string when pass anything besides`R`', () => {
+  test('it returns single space string when pass anything besides`R`', () => {
     expect(stringCases('S')).toBe(' ');
   });
 
-  test('it returns empty string when pass anything besides`R`', () => {
+  test('it returns single space string when pass anything besides`R`', () => {
     expect(stringCases('O')).toBe(' ');
   });
 });

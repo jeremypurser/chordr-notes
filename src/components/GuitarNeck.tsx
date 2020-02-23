@@ -5,7 +5,7 @@ import { stringCases, strToNum } from '../util';
 import { guitarNeckSlice, FretNumbers, StringNumbers } from '../model';
 import '../styles/GuitarNeck.scss';
 
-export default function GuitarNeckComponent() {
+export default function GuitarNeck() {
   // pulls in state from Redux store
   const guitarNeck = useSelector((state: State) => state.guitarNeck);
   const dispatch = useDispatch();

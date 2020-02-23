@@ -6,10 +6,10 @@ describe('stringCases', () => {
   });
 
   test('it returns empty string when pass anything besides`R`', () => {
-    expect(stringCases('S')).toBe('');
+    expect(stringCases('S')).toBe(' ');
   });
 
   test('it returns empty string when pass anything besides`R`', () => {
-    expect(stringCases('O')).toBe('');
+    expect(stringCases('O')).toBe(' ');
   });
 });

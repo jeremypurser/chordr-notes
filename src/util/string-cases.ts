@@ -1,6 +1,6 @@
 import { GuitarString } from '../model';
 
-type StringContent = '●' | '';
+type StringContent = '●' | ' ';
 /**
  * @param string of type `GuitarString`
  * @returns HTML content
@@ -8,10 +8,10 @@ type StringContent = '●' | '';
 export function stringCases(string: GuitarString): StringContent {
   switch (string) {
     case 'S':
-      return '';
+      return ' ';
     case 'R':
       return '●';
     default:
-      return '';
+      return ' ';
   }
 }

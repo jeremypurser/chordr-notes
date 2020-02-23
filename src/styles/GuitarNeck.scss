@@ -1,3 +1,7 @@
+.neck.columns.is-gapless:not(:last-child) {
+  margin-bottom: 0px;
+}
+
 .neck {
   border-top: 2px solid black;
 }
@@ -9,4 +13,6 @@
   background: linear-gradient(#000, #000) no-repeat center/2px 100%;
   background-color: yellow;
   cursor: pointer;
+  margin: 0;
+  line-height: 3;
 }

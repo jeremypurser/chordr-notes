@@ -9,7 +9,7 @@ export default function App() {
     <div className="container is-fluid">
       <Header />
       <section className="columns">
-        <div className="column is-one-quarter">
+        <div className="column is-one-fifth">
           <GuitarNeck />
         </div>
         <div className="column is-one-fifth">

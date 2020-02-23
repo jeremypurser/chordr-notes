@@ -1,4 +1,4 @@
-import { guitarNeckSlice, guitarNeckState } from '../../model';
+import { guitarNeckSlice, guitarNeckState, Neck } from '../../model';
 
 describe('guitarSlice.reducer', () => {
   test('it should change the fretted string on pressString', () => {
@@ -40,5 +40,29 @@ describe('guitarSlice.reducer', () => {
     });
 
     expect(fretTwice).toEqual(expectedState);
+  });
+
+  test('it should remove fret when pressing a fretted node', () => {
+    const expectedFirstState = [
+      ['S', 'S', 'S', 'S', 'S', 'S'],
+      ['S', 'S', 'S', 'S', 'S', 'S'],
+      ['S', 'S', 'S', 'S', 'S', 'S'],
+      ['S', 'S', 'R', 'S', 'S', 'S'],
+      ['S', 'S', 'S', 'S', 'S', 'S'],
+      ['S', 'S', 'S', 'S', 'S', 'S'],
+    ];
+
+    const fretThreeStringTwo = (state: Neck): Neck => {
+      return guitarNeckSlice.reducer(state, {
+        type: 'guitarNeck/pressString',
+        payload: { fret: 3, string: 2 },
+      });
+    };
+
+    const fretOnce = fretThreeStringTwo(guitarNeckState);
+
+    expect(fretOnce).toEqual(expectedFirstState);
+
+    expect(fretThreeStringTwo(fretOnce)).toEqual(guitarNeckState);
   });
 });

@@ -15,11 +15,22 @@ export const guitarNeckSlice = createSlice({
   initialState,
   reducers: {
     pressString: (state, action: PayloadAction<PressStringAction>): Neck => {
+      // Clone state argument, immutability
       const newState = state.map(row => row.slice());
+      const { fret, string } = action.payload;
+
+      // Only one fret can be 'R' per string
       newState.forEach(fret => {
         fret[action.payload.string] = 'S';
       });
-      newState[action.payload.fret][action.payload.string] = 'R';
+
+      // pressString event toggles on and off
+      if (state[fret][string] === 'S') {
+        newState[fret][string] = 'R';
+      } else {
+        newState[fret][string] = 'S';
+      }
+
       return newState as Neck;
     },
   },

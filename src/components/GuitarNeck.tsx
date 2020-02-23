@@ -1,25 +1,34 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { State } from '../model';
-import { stringCases } from '../util';
+import { stringCases, strToNum } from '../util';
+import { guitarNeckSlice, FretNumbers, StringNumbers } from '../model';
 import '../styles/GuitarNeck.scss';
 
 export default function GuitarNeckComponent() {
   // pulls in state from Redux store
   const guitarNeck = useSelector((state: State) => state.guitarNeck);
+  const dispatch = useDispatch();
+  const { actions } = guitarNeckSlice;
 
-  // TODO: hard code v-line
-  // TODO: change stringeCases to determine node display
-  // TODO: rename i and j
-  const renderGuitarNeck = guitarNeck.map((fret, i) => (
-    <div className="neck" key={i}>
-      {fret.map((string, j) => (
+  const handleFretClick = (e: React.MouseEvent) => {
+    const [fret, string] = e.currentTarget.id.split('-').map(strToNum) as [
+      FretNumbers,
+      StringNumbers
+    ];
+    dispatch(actions.pressString({ fret, string }));
+  };
+
+  const renderGuitarNeck = guitarNeck.map((fret, fretIdx) => (
+    <div className="neck" key={fretIdx}>
+      {fret.map((string, stringIdx) => (
         <div
-          onClick={() => console.log('i:', i, 'j:', j)}
-          className={`column ${stringCases(string)}`}
-          key={j}
+          onClick={handleFretClick}
+          className="column v-line"
+          id={`${fretIdx}-${stringIdx}`}
+          key={stringIdx}
         >
-          <span className="fret-string"> </span>
+          <span className="fret-string">{stringCases(string)}</span>
         </div>
       ))}
     </div>

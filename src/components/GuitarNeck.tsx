@@ -21,7 +21,7 @@ export default function GuitarNeck() {
   };
 
   const renderGuitarNeck = guitarNeck.map((fret, fretIdx) => (
-    <div className="neck columns" key={fretIdx}>
+    <div className="neck columns is-gapless" key={fretIdx}>
       {fret.map((string, stringIdx) => (
         <div
           onClick={handleFretClick}
@@ -35,5 +35,5 @@ export default function GuitarNeck() {
     </div>
   ));
 
-  return <section className="neck">{renderGuitarNeck}</section>;
+  return <>{renderGuitarNeck}</>;
 }

@@ -16,8 +16,8 @@ type Fret = [
 
 export type Neck = [Fret, Fret, Fret, Fret, Fret, Fret];
 
-type FretNumbers = 1 | 2 | 3 | 4 | 5 | 6;
+export type FretNumbers = 0 | 1 | 2 | 3 | 4 | 5;
 
-type StringNumbers = FretNumbers;
+export type StringNumbers = FretNumbers;
 
 export type PressStringAction = { fret: FretNumbers; string: StringNumbers };

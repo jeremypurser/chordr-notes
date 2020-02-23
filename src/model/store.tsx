@@ -1,9 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { guitarNeck } from './guitar-neck-slice';
+import { guitarNeckSlice } from './guitar-neck-slice';
 
 const reducer = {
-  guitarNeck: guitarNeck.reducer
+  guitarNeck: guitarNeckSlice.reducer,
 };
 
 export const store = configureStore({ reducer });
-

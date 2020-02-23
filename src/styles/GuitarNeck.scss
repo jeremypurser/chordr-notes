@@ -6,14 +6,16 @@
   width: 2rem;
   background-color: yellow;
   border-bottom: 2px solid black;
+  text-align: center;
 }
 
 .v-line {
   background: linear-gradient(#000, #000) no-repeat center/2px 100%;
   background-color: yellow;
+  cursor: pointer;
 }
 
 .fret-string {
-  color: yellow;
-  z-index: -5;
+  margin-left: -0.2rem;
+  text-align: center;
 }

@@ -16,11 +16,12 @@ export default function GuitarNeckComponent() {
       FretNumbers,
       StringNumbers
     ];
+
     dispatch(actions.pressString({ fret, string }));
   };
 
   const renderGuitarNeck = guitarNeck.map((fret, fretIdx) => (
-    <div className="neck" key={fretIdx}>
+    <div className="neck columns" key={fretIdx}>
       {fret.map((string, stringIdx) => (
         <div
           onClick={handleFretClick}
@@ -34,5 +35,5 @@ export default function GuitarNeckComponent() {
     </div>
   ));
 
-  return <section className="columns">{renderGuitarNeck}</section>;
+  return <section className="neck">{renderGuitarNeck}</section>;
 }

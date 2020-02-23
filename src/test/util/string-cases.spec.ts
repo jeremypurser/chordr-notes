@@ -7,9 +7,6 @@ describe('stringCases', () => {
 
   test('it returns single space string when pass anything besides`R`', () => {
     expect(stringCases('S')).toBe(' ');
-  });
-
-  test('it returns single space string when pass anything besides`R`', () => {
     expect(stringCases('O')).toBe(' ');
   });
 });

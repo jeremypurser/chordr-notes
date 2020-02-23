@@ -16,6 +16,9 @@ export const guitarNeckSlice = createSlice({
   reducers: {
     pressString: (state, action: PayloadAction<PressStringAction>): Neck => {
       const newState = state.map(row => row.slice());
+      newState.forEach(fret => {
+        fret[action.payload.string] = 'S';
+      });
       newState[action.payload.fret][action.payload.string] = 'R';
       return newState as Neck;
     },

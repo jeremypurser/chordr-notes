@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Neck, PressStringAction } from './types';
 
-const initialState: Neck = [
+export const initialState: Neck = [
   ['S', 'S', 'S', 'S', 'S', 'S'],
   ['S', 'S', 'S', 'S', 'S', 'S'],
   ['S', 'S', 'S', 'S', 'S', 'S'],

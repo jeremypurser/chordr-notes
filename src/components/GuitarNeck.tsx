@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { State } from '../model';
+import { State } from '../state';
 import { stringCases, strToNum } from '../util';
-import { guitarNeckSlice, FretNumbers, StringNumbers } from '../model';
+import { guitarNeckSlice, FretNumbers, StringNumbers } from '../state';
 import '../styles/GuitarNeck.scss';
 
 export default function GuitarNeck() {

@@ -1,4 +1,4 @@
-import { GuitarString } from '../model';
+import { GuitarString } from '../state';
 
 type StringContent = '●' | ' ';
 /**

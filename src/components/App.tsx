@@ -13,7 +13,10 @@ export default function App() {
           <GuitarNeck />
         </div>
         <div className="column is-one-fifth">
-          <ChordDetailsForm />
+          <div className="columns">
+            <div className="column is-one-fifth" />
+            <ChordDetailsForm />
+          </div>
         </div>
       </section>
     </div>

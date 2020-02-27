@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Neck, PressStringAction } from './types';
+import { Neck, PressStringPayload } from './types';
 
 export const initialState: Neck = [
   ['S', 'S', 'S', 'S', 'S', 'S'],
@@ -14,7 +14,7 @@ export const guitarNeckSlice = createSlice({
   name: 'guitarNeck',
   initialState,
   reducers: {
-    pressString: (state, action: PayloadAction<PressStringAction>): Neck => {
+    pressString: (state, action: PayloadAction<PressStringPayload>): Neck => {
       // Clone state argument, immutability
       const newState = state.map(row => row.slice());
       const { fret, string } = action.payload;

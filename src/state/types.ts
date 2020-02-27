@@ -1,5 +1,6 @@
 export interface State {
   guitarNeck: Neck;
+  chordName: string;
 }
 
 // 'R' === Ring, 'S' === Silent

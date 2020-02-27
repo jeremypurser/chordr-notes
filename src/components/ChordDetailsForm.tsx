@@ -1,8 +1,9 @@
 import React, { MouseEvent } from 'react';
-import { default as SaveButton } from './Button';
-import '../styles/ChordDetailsForm.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import TuningSelect from './TuningSelect';
+import { default as SaveButton } from './Button';
 import { chordNameSlice, State } from '../state';
+import '../styles/ChordDetailsForm.scss';
 
 export default function ChordDetailsForm() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export default function ChordDetailsForm() {
 
   return (
     <div className="field">
+      <TuningSelect />
       <label className="label">Chord Name</label>
       <div className="control details">
         <input

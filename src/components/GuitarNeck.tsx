@@ -47,7 +47,7 @@ export default function GuitarNeck() {
 
   return (
     <>
-      <h1 className="title">{chordName}</h1>
+      <h2 className="title">{chordName}</h2>
       {renderTuning}
       {renderGuitarNeck}
     </>

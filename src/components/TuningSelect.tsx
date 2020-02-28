@@ -1,12 +1,17 @@
 import React from 'react';
-import { ALL_NOTES, State } from '../state';
-import { useSelector } from 'react-redux';
+import { ALL_NOTES, State, StringNumber, Note } from '../state';
+import { useSelector, useDispatch } from 'react-redux';
+import { tuningSlice } from '../state';
 
 export default function TuningSelect() {
   const tuning = useSelector((state: State) => state.tuning);
+  const dispatch = useDispatch();
+  const { actions } = tuningSlice;
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(e);
+    const note = e.target.value as Note;
+    const string = +e.target.id.split('-')[1] as StringNumber;
+    dispatch(actions.changeTuning({ string, note }));
   };
 
   const Options = ALL_NOTES.map((note, i) => (

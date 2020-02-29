@@ -1,7 +1,7 @@
+import { CurrentNoteState } from './current-note-slice';
+
 export interface State {
-  guitarNeck: Neck;
-  chordName: string;
-  tuning: Tuning;
+  currentNote: CurrentNoteState;
 }
 
 // 'R' === Ring, 'S' === Silent

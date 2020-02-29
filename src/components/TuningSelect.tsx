@@ -1,12 +1,12 @@
 import React from 'react';
 import { ALL_NOTES, State, StringNumber, Note } from '../state';
 import { useSelector, useDispatch } from 'react-redux';
-import { tuningSlice } from '../state';
+import { currentNoteSlice } from '../state';
 
 export default function TuningSelect() {
-  const tuning = useSelector((state: State) => state.tuning);
+  const tuning = useSelector((state: State) => state.currentNote.tuning);
   const dispatch = useDispatch();
-  const { actions } = tuningSlice;
+  const { actions } = currentNoteSlice;
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const note = e.target.value as Note;

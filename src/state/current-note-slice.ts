@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Neck, PressStringPayload, Tuning, ChangeTuningPayload } from './types';
 
-interface CurrentNoteState {
+export interface CurrentNoteState {
   name: string;
   note: Neck;
   tuning: Tuning;

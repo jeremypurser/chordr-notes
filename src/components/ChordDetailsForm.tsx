@@ -2,13 +2,13 @@ import React, { MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TuningSelect from './TuningSelect';
 import { default as SaveButton } from './Button';
-import { chordNameSlice, State } from '../state';
+import { currentNoteSlice, State } from '../state';
 import '../styles/ChordDetailsForm.scss';
 
 export default function ChordDetailsForm() {
   const dispatch = useDispatch();
-  const chordName = useSelector((state: State) => state.chordName);
-  const { actions } = chordNameSlice;
+  const name = useSelector((state: State) => state.currentNote.name);
+  const { actions } = currentNoteSlice;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(actions.enterChordName(e.target.value));
@@ -27,7 +27,7 @@ export default function ChordDetailsForm() {
           onChange={handleChange}
           className="input"
           type="text"
-          value={chordName}
+          value={name}
           placeholder="G major"
         />
       </div>

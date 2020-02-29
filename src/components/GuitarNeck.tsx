@@ -2,15 +2,15 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { State } from '../state';
 import { stringCases, strToNum } from '../util';
-import { guitarNeckSlice, FretNumber, StringNumber } from '../state';
+import { currentNoteSlice, FretNumber, StringNumber } from '../state';
 import '../styles/GuitarNeck.scss';
 
 export default function GuitarNeck() {
   // pulls in state from Redux store
-  const state = useSelector((state: State) => state);
-  const { guitarNeck, chordName, tuning } = state;
+  const currentNote = useSelector((state: State) => state.currentNote);
+  const { note, name, tuning } = currentNote;
   const dispatch = useDispatch();
-  const { actions } = guitarNeckSlice;
+  const { actions } = currentNoteSlice;
 
   const handleFretClick = (e: React.MouseEvent) => {
     const [fret, string] = e.currentTarget.id.split('-').map(strToNum) as [
@@ -30,7 +30,7 @@ export default function GuitarNeck() {
     </div>
   );
 
-  const renderGuitarNeck = guitarNeck.map((fret, fretIdx) => (
+  const renderGuitarNeck = note.map((fret, fretIdx) => (
     <div className="neck columns is-gapless" key={fretIdx}>
       {fret.map((string, stringIdx) => (
         <div
@@ -47,7 +47,7 @@ export default function GuitarNeck() {
 
   return (
     <>
-      <h2 className="title">{chordName}</h2>
+      <h2 className="title">{name}</h2>
       {renderTuning}
       {renderGuitarNeck}
     </>

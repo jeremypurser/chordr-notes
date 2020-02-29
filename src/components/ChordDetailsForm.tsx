@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import TuningSelect from './TuningSelect';
 import { default as SaveButton } from './Button';
 import { currentNoteSlice, State } from '../state';
+import NotesAPI from '../api';
 import '../styles/ChordDetailsForm.scss';
 
 export default function ChordDetailsForm() {
   const dispatch = useDispatch();
-  const name = useSelector((state: State) => state.currentNote.name);
+  const currentNote = useSelector((state: State) => state.currentNote);
+  const { name } = currentNote;
   const { actions } = currentNoteSlice;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +17,9 @@ export default function ChordDetailsForm() {
   };
 
   const handleSubmit = (e: MouseEvent) => {
-    console.log(e);
+    NotesAPI.post(currentNote);
+    // action to clear state
+    // show toast
   };
 
   return (

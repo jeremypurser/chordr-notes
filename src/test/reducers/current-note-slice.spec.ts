@@ -1,8 +1,8 @@
-import { guitarNeckSlice, guitarNeckState, Neck } from '../../model';
+import { CurrentNoteState, currentNoteSlice, initialState } from '../../state';
 
-describe('guitarSlice.reducer', () => {
+describe('currentNoteSlice.reducer', () => {
   test('it should change the fretted string on pressString', () => {
-    const expectedState = [
+    const expectedNote = [
       ['R', 'S', 'S', 'S', 'S', 'S'],
       ['S', 'S', 'S', 'S', 'S', 'S'],
       ['S', 'S', 'S', 'S', 'S', 'S'],
@@ -11,16 +11,21 @@ describe('guitarSlice.reducer', () => {
       ['S', 'S', 'S', 'S', 'S', 'S'],
     ];
 
+    const expectedState = {
+      ...initialState,
+      note: expectedNote,
+    };
+
     expect(
-      guitarNeckSlice.reducer(guitarNeckState, {
-        type: 'guitarNeck/pressString',
+      currentNoteSlice.reducer(initialState, {
+        type: 'current-note/pressString',
         payload: { fret: 0, string: 0 },
       })
     ).toEqual(expectedState);
   });
 
   test('it should only ever have one fret per string', () => {
-    const expectedState = [
+    const expectedNote = [
       ['S', 'S', 'S', 'S', 'S', 'S'],
       ['S', 'S', 'S', 'S', 'S', 'S'],
       ['S', 'S', 'S', 'S', 'S', 'S'],
@@ -29,13 +34,18 @@ describe('guitarSlice.reducer', () => {
       ['S', 'S', 'S', 'S', 'S', 'S'],
     ];
 
-    const fretOnce = guitarNeckSlice.reducer(guitarNeckState, {
-      type: 'guitarNeck/presString',
+    const expectedState = {
+      ...initialState,
+      note: expectedNote,
+    };
+
+    const fretOnce = currentNoteSlice.reducer(initialState, {
+      type: 'current-note/presString',
       payload: { fret: 0, string: 0 },
     });
 
-    const fretTwice = guitarNeckSlice.reducer(fretOnce, {
-      type: 'guitarNeck/pressString',
+    const fretTwice = currentNoteSlice.reducer(fretOnce, {
+      type: 'current-note/pressString',
       payload: { fret: 3, string: 0 },
     });
 
@@ -43,7 +53,7 @@ describe('guitarSlice.reducer', () => {
   });
 
   test('it should remove fret when pressing a fretted node', () => {
-    const expectedFirstState = [
+    const expectedFirstNote = [
       ['S', 'S', 'S', 'S', 'S', 'S'],
       ['S', 'S', 'S', 'S', 'S', 'S'],
       ['S', 'S', 'S', 'S', 'S', 'S'],
@@ -52,17 +62,22 @@ describe('guitarSlice.reducer', () => {
       ['S', 'S', 'S', 'S', 'S', 'S'],
     ];
 
-    const fretThreeStringTwo = (state: Neck): Neck => {
-      return guitarNeckSlice.reducer(state, {
-        type: 'guitarNeck/pressString',
+    const expectedFirstState = {
+      ...initialState,
+      note: expectedFirstNote,
+    };
+
+    const fretThreeStringTwo = (state: CurrentNoteState) => {
+      return currentNoteSlice.reducer(state, {
+        type: 'current-note/pressString',
         payload: { fret: 3, string: 2 },
       });
     };
 
-    const fretOnce = fretThreeStringTwo(guitarNeckState);
+    const fretOnce = fretThreeStringTwo(initialState);
 
     expect(fretOnce).toEqual(expectedFirstState);
 
-    expect(fretThreeStringTwo(fretOnce)).toEqual(guitarNeckState);
+    expect(fretThreeStringTwo(fretOnce)).toEqual(initialState);
   });
 });

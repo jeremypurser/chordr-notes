@@ -1,7 +1,9 @@
+import { NoteCollectionState } from './collection-slice';
 import { CurrentNoteState } from './current-note-slice';
 
 export interface State {
   currentNote: CurrentNoteState;
+  collection: NoteCollectionState;
 }
 
 // 'R' === Ring, 'S' === Silent

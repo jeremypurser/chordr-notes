@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Neck, PressStringPayload, Tuning, ChangeTuningPayload } from './types';
+import { ChangeTuningPayload, Neck, PressStringPayload, Tuning } from './types';
 
 export interface CurrentNoteState {
   name: string;
@@ -67,5 +67,8 @@ export const currentNoteSlice = createSlice({
         tuning: newTuning as Tuning,
       };
     },
+    clearForm: () => ({
+      ...initialState,
+    }),
   },
 });

@@ -20,5 +20,7 @@ export default function NotesCollection() {
     return () => setCancel(true);
   });
 
+  // const renderNotes =
+
   return <div>hiii</div>;
 }

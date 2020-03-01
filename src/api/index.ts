@@ -1,11 +1,16 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { CurrentNoteState } from '../state';
+import { NoteCollectionState } from '../state/collection-slice';
 
 const url = 'http://localhost:3001/notes';
 
+interface GetResponse {
+  data: NoteCollectionState;
+}
+
 const NotesAPI = {
-  get: async (userId: string, endpoint = url) => {
+  get: async (userId: string, endpoint = url): Promise<GetResponse> => {
     return await axios.get(`${endpoint}/${userId}`);
   },
   post: async (payload: CurrentNoteState, endpoint = url) => {

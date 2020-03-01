@@ -7,10 +7,8 @@ interface ButtonProps {
 }
 export default function Button({ text, color, clickHandler }: ButtonProps) {
   return (
-    <div className="control">
-      <button onClick={clickHandler} className={`button ${color}`}>
-        {text}
-      </button>
-    </div>
+    <button onClick={clickHandler} className={`button ${color}`}>
+      {text}
+    </button>
   );
 }

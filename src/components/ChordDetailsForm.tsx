@@ -1,10 +1,10 @@
 import React, { MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import TuningSelect from './TuningSelect';
-import { default as SaveButton } from './Button';
-import { currentNoteSlice, State } from '../state';
 import NotesAPI from '../api';
+import { currentNoteSlice, State } from '../state';
 import '../styles/ChordDetailsForm.scss';
+import Button from './Button';
+import TuningSelect from './TuningSelect';
 
 export default function ChordDetailsForm() {
   const dispatch = useDispatch();
@@ -17,9 +17,14 @@ export default function ChordDetailsForm() {
   };
 
   const handleSubmit = (e: MouseEvent) => {
+    e.preventDefault();
     NotesAPI.post(currentNote);
-    // action to clear state
-    // show toast
+    dispatch(actions.clearForm());
+  };
+
+  const handleClear = (e: MouseEvent) => {
+    e.preventDefault();
+    dispatch(actions.clearForm());
   };
 
   return (
@@ -35,7 +40,16 @@ export default function ChordDetailsForm() {
           placeholder="G major"
         />
       </div>
-      <SaveButton clickHandler={handleSubmit} text="Save Chord" />
+      <Button
+        clickHandler={handleSubmit}
+        text="Save Chord"
+        color="is-primary"
+      />
+      <Button
+        clickHandler={handleClear}
+        text="Clear Chord"
+        color="is-warning"
+      />
     </div>
   );
 }

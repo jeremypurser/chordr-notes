@@ -1,8 +1,8 @@
+import 'bulma';
 import React from 'react';
+import ChordDetailsForm from './ChordDetailsForm';
 import GuitarNeck from './GuitarNeck';
 import Header from './Header';
-import ChordDetailsForm from './ChordDetailsForm';
-import 'bulma';
 
 export default function App() {
   return (

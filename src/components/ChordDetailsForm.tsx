@@ -40,16 +40,8 @@ export default function ChordDetailsForm() {
           placeholder="G major"
         />
       </div>
-      <Button
-        clickHandler={handleSubmit}
-        text="Save Chord"
-        color="is-primary"
-      />
-      <Button
-        clickHandler={handleClear}
-        text="Clear Chord"
-        color="is-warning"
-      />
+      <Button clickHandler={handleSubmit} text="Save" color="is-primary" />
+      <Button clickHandler={handleClear} text="Clear" color="is-warning" />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Neck } from './types';
+import { CurrentNoteState } from './current-note-slice';
 
-export type NoteCollectionState = Neck[];
+export type NoteCollectionState = CurrentNoteState[];
 
 const initialState: NoteCollectionState = [];
 

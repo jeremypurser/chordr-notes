@@ -10,7 +10,7 @@ import {
 } from '../state';
 import { strToNum } from '../util';
 
-interface GuitarNeckProps {
+export interface GuitarNeckProps {
   name: string;
   note: Neck;
   tuning: Tuning;

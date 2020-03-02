@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { CurrentNoteState } from '../state';
 import { NoteCollectionState } from '../state/collection-slice';
 
-const url = 'http://localhost:3001/notes';
+const url = 'http://localhost:3001';
 
 interface GetResponse {
   data: NoteCollectionState;
@@ -11,7 +11,7 @@ interface GetResponse {
 
 const NotesAPI = {
   get: async (userId: string, endpoint = url): Promise<GetResponse> => {
-    return await axios.get(`${endpoint}/${userId}`);
+    return await axios.get(`${endpoint}/${userId}/notes`);
   },
   post: async (payload: CurrentNoteState, endpoint = url) => {
     return await axios

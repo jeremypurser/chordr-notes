@@ -1,28 +1,12 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { State } from '../state';
-import { stringCases, strToNum } from '../util';
-import { currentNoteSlice, FretNumber, StringNumber } from '../state';
+import { GuitarNeckProps } from '../containers/GuitarNeckContainer';
 import '../styles/GuitarNeck.scss';
+import { stringCases } from '../util';
 
-export default function GuitarNeck() {
-  // pulls in state from Redux store
-  const currentNote = useSelector((state: State) => state.currentNote);
-  const { note, name, tuning } = currentNote;
-  const dispatch = useDispatch();
-  const { actions } = currentNoteSlice;
-
-  const handleFretClick = (e: React.MouseEvent) => {
-    const [fret, string] = e.currentTarget.id.split('-').map(strToNum) as [
-      FretNumber,
-      StringNumber
-    ];
-    dispatch(actions.pressString({ fret, string }));
-  };
-
+export default function GuitarNeck(props: GuitarNeckProps) {
   const renderTuning = (
     <div className="columns is-gapless">
-      {tuning.map((note, i) => (
+      {props.tuning.map((note, i) => (
         <div key={i} className="column tuning">
           {note}
         </div>
@@ -30,11 +14,11 @@ export default function GuitarNeck() {
     </div>
   );
 
-  const renderGuitarNeck = note.map((fret, fretIdx) => (
+  const renderGuitarNeck = props.note.map((fret, fretIdx) => (
     <div className="neck columns is-gapless" key={fretIdx}>
       {fret.map((string, stringIdx) => (
         <div
-          onClick={handleFretClick}
+          onClick={props.callback}
           className="column v-line"
           id={`${fretIdx}-${stringIdx}`}
           key={stringIdx}
@@ -47,7 +31,7 @@ export default function GuitarNeck() {
 
   return (
     <>
-      <h2 className="title">{name}</h2>
+      <h2 className="title">{props.name}</h2>
       {renderTuning}
       {renderGuitarNeck}
     </>

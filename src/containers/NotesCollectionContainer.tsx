@@ -13,15 +13,13 @@ export interface NotesCollectionProps {
 }
 
 export default function notesCollectionContainer(
-  NotesCollection: React.ComponentType
+  NotesCollection: React.ComponentType<NotesCollectionProps>
 ) {
   return () => {
     const [cancel, setCancel] = useState(false);
     const collection = useSelector((state: State) => state.collection);
     const dispatch = useDispatch();
     const { actions } = noteCollectionSlice;
-
-    // console.log(collection);
 
     useEffect(() => {
       console.log('using effect');
@@ -32,6 +30,6 @@ export default function notesCollectionContainer(
       return () => setCancel(true);
     }, [actions, cancel, dispatch]);
 
-    return <NotesCollection />;
+    return <NotesCollection collection={collection} />;
   };
 }

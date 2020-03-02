@@ -1,6 +1,6 @@
 import 'bulma';
 import React from 'react';
-import { guitarNeckContainer } from '../containers';
+import guitarNeckContainer from '../containers';
 import ChordDetailsForm from './ChordDetailsForm';
 import GuitarNeck from './GuitarNeck';
 

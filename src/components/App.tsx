@@ -1,12 +1,30 @@
 import 'bulma';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
+import NotesAPI from '../api';
 import logo from '../assets/img/chordrnotes.png';
+import { State } from '../state';
+import { noteCollectionSlice } from '../state/collection-slice';
 import '../styles/App.scss';
 import CreateNote from './CreateNote';
 import NotesCollection from './NotesCollection';
 
 export default function App() {
+  const [cancel, setCancel] = useState(false);
+  const collection = useSelector((state: State) => state.collection);
+  const dispatch = useDispatch();
+  const { actions } = noteCollectionSlice;
+
+  useEffect(() => {
+    console.log('using effect');
+    !cancel &&
+      NotesAPI.get('1').then(result => {
+        dispatch(actions.loadNotes(result.data));
+      });
+    return () => setCancel(true);
+  }, [actions, cancel, dispatch]);
+
   return (
     <>
       <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -29,7 +47,12 @@ export default function App() {
       </nav>
 
       <div className="container is-fluid">
-        <Route path="/collection" component={NotesCollection} />
+        <Route
+          path="/collection"
+          render={props => (
+            <NotesCollection {...props} collection={collection} />
+          )}
+        />
         <Route path="/create" component={CreateNote} />
       </div>
     </>

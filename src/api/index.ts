@@ -15,7 +15,7 @@ const NotesAPI = {
   },
   post: async (payload: CurrentNoteState, endpoint = url) => {
     return await axios
-      .post(endpoint, payload)
+      .post(`${endpoint}/notes`, payload)
       .then(({ status }) => {
         if (status === 201) {
           toast.success('Your note is saved!', { autoClose: 3000 });
@@ -24,6 +24,7 @@ const NotesAPI = {
         }
       })
       .catch(err => {
+        toast.error('There was an error while attempting to save your note.');
         console.error(err);
         // do something else
       });

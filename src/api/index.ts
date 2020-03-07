@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { noteNotify } from '../services';
 import { CurrentNoteState } from '../state';
 import { NoteCollectionState } from '../state/collection-slice';
 
@@ -19,17 +19,34 @@ const NotesAPI = {
   saveNote: async (payload: CurrentNoteState, endpoint = url) => {
     return await axios
       .post(`${endpoint}/notes`, payload)
-      .then(({ status }) => {
-        if (status === 201) {
-          toast.success('Your note is saved!', { autoClose: 3000 });
-        } else {
-          toast.error('There was an error while attempting to save your note.');
-        }
-        return status === 201;
-      })
+      .then(noteNotify.status)
       .catch(err => {
-        toast.error('There was an error while attempting to save your note.');
+        noteNotify.error('save');
         console.error(err);
+        return false;
+      });
+  },
+  editNote: async (
+    noteId: string,
+    payload: CurrentNoteState,
+    endpoint = url
+  ) => {
+    return await axios
+      .put(`${endpoint}/notes/${noteId}`, payload)
+      .then(noteNotify.status)
+      .catch(err => {
+        console.error(err);
+        noteNotify.error('update');
+        return false;
+      });
+  },
+  deleteNote: async (noteId: string, endpoint = url) => {
+    return await axios
+      .delete(`${endpoint}/${noteId}`)
+      .then(noteNotify.status)
+      .catch(err => {
+        console.error(err);
+        noteNotify.error('delete');
         return false;
       });
   },

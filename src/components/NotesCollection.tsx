@@ -4,10 +4,10 @@ import '../styles/NotesCollection.scss';
 import GuitarNeck from './GuitarNeck';
 
 export default function NotesCollection(props: NotesCollectionProps) {
-  const renderNotes = props.collection.map((props, i) => {
+  const renderNotes = props.collection.map((note, i) => {
     return (
       <div key={i} className="collection-note">
-        <GuitarNeck {...props} callback={() => {}} />
+        <GuitarNeck {...note} callback={() => {}} />
       </div>
     );
   });

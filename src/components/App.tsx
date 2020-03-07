@@ -1,5 +1,5 @@
 import 'bulma';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 import NotesAPI from '../api';
@@ -11,19 +11,21 @@ import CreateNote from './CreateNote';
 import NotesCollection from './NotesCollection';
 
 export default function App() {
-  const [cancel, setCancel] = useState(false);
+  const isRequestAllowed = useRef(true);
   const collection = useSelector((state: State) => state.collection);
   const dispatch = useDispatch();
   const { actions } = noteCollectionSlice;
 
   useEffect(() => {
     console.log('using effect');
-    !cancel &&
+    isRequestAllowed.current &&
       NotesAPI.retrieveNotes('1').then(result => {
         dispatch(actions.loadNotes(result.data));
       });
-    return () => setCancel(true);
-  }, [actions, cancel, dispatch]);
+    return () => {
+      isRequestAllowed.current = false;
+    };
+  }, [actions, dispatch]);
 
   return (
     <>

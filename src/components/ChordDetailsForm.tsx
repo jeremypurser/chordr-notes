@@ -18,7 +18,7 @@ export default function ChordDetailsForm() {
 
   const handleSubmit = (e: MouseEvent) => {
     e.preventDefault();
-    NotesAPI.post(currentNote);
+    NotesAPI.saveNote(currentNote);
     dispatch(actions.clearForm());
   };
 

@@ -25,10 +25,12 @@ const NotesAPI = {
         } else {
           toast.error('There was an error while attempting to save your note.');
         }
+        return status === 201;
       })
       .catch(err => {
         toast.error('There was an error while attempting to save your note.');
         console.error(err);
+        return false;
         // do something else
       });
   },

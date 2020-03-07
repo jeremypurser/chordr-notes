@@ -31,7 +31,6 @@ const NotesAPI = {
         toast.error('There was an error while attempting to save your note.');
         console.error(err);
         return false;
-        // do something else
       });
   },
 };

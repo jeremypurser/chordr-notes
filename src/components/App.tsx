@@ -17,8 +17,8 @@ export default function App() {
   const { actions } = noteCollectionSlice;
 
   useEffect(() => {
-    console.log('using effect');
     isRequestAllowed.current &&
+      // change api arg to user state from redux
       NotesAPI.retrieveNotes('1').then(result => {
         dispatch(actions.loadNotes(result.data));
       });

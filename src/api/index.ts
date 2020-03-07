@@ -10,10 +10,13 @@ interface GetResponse {
 }
 
 const NotesAPI = {
-  get: async (userId: string, endpoint = url): Promise<GetResponse> => {
+  retrieveNotes: async (
+    userId: string,
+    endpoint = url
+  ): Promise<GetResponse> => {
     return await axios.get(`${endpoint}/${userId}/notes`);
   },
-  post: async (payload: CurrentNoteState, endpoint = url) => {
+  saveNote: async (payload: CurrentNoteState, endpoint = url) => {
     return await axios
       .post(`${endpoint}/notes`, payload)
       .then(({ status }) => {

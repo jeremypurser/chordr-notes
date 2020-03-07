@@ -20,11 +20,7 @@ const NotesAPI = {
     return await axios
       .post(`${endpoint}/notes`, payload)
       .then(noteNotify.status)
-      .catch(err => {
-        noteNotify.error('save');
-        console.error(err);
-        return false;
-      });
+      .catch(noteNotify.catchError);
   },
   editNote: async (
     noteId: string,
@@ -34,21 +30,13 @@ const NotesAPI = {
     return await axios
       .put(`${endpoint}/notes/${noteId}`, payload)
       .then(noteNotify.status)
-      .catch(err => {
-        console.error(err);
-        noteNotify.error('update');
-        return false;
-      });
+      .catch(noteNotify.catchError);
   },
   deleteNote: async (noteId: string, endpoint = url) => {
     return await axios
       .delete(`${endpoint}/${noteId}`)
       .then(noteNotify.status)
-      .catch(err => {
-        console.error(err);
-        noteNotify.error('delete');
-        return false;
-      });
+      .catch(noteNotify.catchError);
   },
 };
 

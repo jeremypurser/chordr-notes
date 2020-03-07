@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 
-type CrudOperation = 'save' | 'update' | 'delete';
+type CrudOperation = 'save' | 'update' | 'delete' | 'error';
 
 const timeToClose = { autoClose: 2500 };
 
@@ -17,10 +17,11 @@ export const noteNotify = {
 
   /** Displays error card */
   error: (crudOperation: CrudOperation, notify = toast, time = timeToClose) => {
-    notify.error(
-      `There was an error while attempting to ${crudOperation} your note`,
-      time
-    );
+    const displayError =
+      crudOperation === 'error'
+        ? 'Something went wrong :('
+        : `There wasn error while attempting to ${crudOperation} your note`;
+    notify.error(displayError, time);
   },
 
   /** Displays appropriate card */
@@ -31,5 +32,12 @@ export const noteNotify = {
       noteNotify.error(data);
     }
     return status > 199 && status < 300;
+  },
+
+  /** Displays error */
+  catchError: (err: Error) => {
+    console.error(err);
+    noteNotify.error('error');
+    return false;
   },
 };

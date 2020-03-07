@@ -24,7 +24,7 @@ export default function notesCollectionContainer(
     useEffect(() => {
       console.log('using effect');
       !cancel &&
-        NotesAPI.get('1').then(result => {
+        NotesAPI.retrieveNotes('1').then(result => {
           dispatch(actions.loadNotes(result.data));
         });
       return () => setCancel(true);

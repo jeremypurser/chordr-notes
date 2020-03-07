@@ -11,5 +11,9 @@ export const noteCollectionSlice = createSlice({
   reducers: {
     loadNotes: (state, action: PayloadAction<NoteCollectionState>) =>
       action.payload,
+    saveNote: (state, action: PayloadAction<CurrentNoteState>) => [
+      ...state,
+      action.payload,
+    ],
   },
 });
